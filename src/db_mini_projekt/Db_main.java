@@ -17,8 +17,12 @@ public class Db_main {
 		System.out.print(" '3' for faculty |");
 		System.out.print(" '4' for belongsto_has |");
 		System.out.println(" '5' for registration |\n");
-		Scanner input = new Scanner(System.in);
-			/*
+		Scanner chooseTable = new Scanner(System.in);
+		int tableName = chooseTable.nextInt();
+		chooseTable(tableName);
+		
+		
+		/*
 			//0. Anslutningsinformation
 			Properties mySQLProps= new Properties();
 			mySQLProps.setProperty("user", "root");
@@ -43,5 +47,28 @@ public class Db_main {
 			catch(SQLException e) {
 				e.printStackTrace();
 			}*/
+	}
+	public static void chooseTable(int i) {
+		switch (i) {
+		
+		case 1: Student student = new Student();
+		break;	
+		
+		case 2: Registration reg = new Registration();
+		break;	
+		/*
+		case 3: Faculty faculty = new Faculty();
+		break;	
+		
+		case 4: BelongsToHas link = new BelongsToHas();
+		break;	
+		
+		case 5: Subject subject = new Subject();
+		break;	
+		*/
+		default:
+		break;
+		
+		}
 	}
 }
