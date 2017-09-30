@@ -1,6 +1,6 @@
 package db_mini_projekt;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,12 +51,12 @@ public class Db_main {
 	public static void chooseTable(int i) {
 		switch (i) {
 		
-		case 1: Student student = new Student();
+		case 1: Student student = new Student(i);
 		break;	
 		
-		case 2: Registration reg = new Registration();
-		break;	
-		/*
+		//case 2: Registration reg = new Registration(i);
+		//break;	
+		
 		case 3: Faculty faculty = new Faculty();
 		break;	
 		
@@ -65,7 +65,7 @@ public class Db_main {
 		
 		case 5: Subject subject = new Subject();
 		break;	
-		*/
+		
 		default:
 		break;
 		
