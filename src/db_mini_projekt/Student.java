@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Student {
 
-	public Student(int i) {
+	public Student() {
 		
 			Properties mySQLProps= new Properties();
 			mySQLProps.setProperty("user", "root");
@@ -20,13 +20,13 @@ public class Student {
 			String URL = "jdbc:mysql://localhost:3306/db_mini_projekt";	
 			
 			try {
-			//1 hämta anslutning
+			//1 hï¿½mta anslutning
 				Connection connection = DriverManager.getConnection(URL, mySQLProps);
 			
 			//2 skapa ett statement
 				Statement statement = connection.createStatement();
 			
-			//3 köra SQL frångan och hämta resultat
+			//3 kï¿½ra SQL frï¿½ngan och hï¿½mta resultat
 				ResultSet resultSet = statement.executeQuery("Select * from student");
 					
 			//4 Procesera resultatet
@@ -37,8 +37,8 @@ public class Student {
 			catch(SQLException e) {
 				e.printStackTrace();
 			}	
-			System.out.print("select '1' to insert |");
-			System.out.print("select '2' to update |");
+			System.out.println("select '1' to insert ||");
+			System.out.print(" select '2' to update");
 			Scanner chooseCommand = new Scanner(System.in);
 			int commandNumber = chooseCommand.nextInt();
 			
@@ -62,24 +62,21 @@ public class Student {
 		mySQLProps2.setProperty("user", "root");
 		mySQLProps2.setProperty("password", "");
 		String URL2 = "jdbc:mysql://localhost:3306/db_mini_projekt";	
-		//String prep = "Update student SET email=? WHERE id=?";
+		String prep = "Update student SET email=? WHERE id=?";
 		temp1.close();
 		temp2.close();
 
 		try {
-		//1 hämta anslutning
+		//1 hï¿½mta anslutning
 			Connection connection = DriverManager.getConnection(URL2, mySQLProps2);
 		
 		//2 skapa ett statement
 			Statement st = connection.createStatement();
 			
-			//PreparedStatement preparedStatement = connection.prepareStatement(prep);
-	        //preparedStatement.setInt(1, studentId);
-	        //preparedStatement.setString(2, studentEmail);		
-		//3 köra SQL frångan och hämta resultat
-			st.executeUpdate("Update student SET email= " + studentEmail + " where id= 1" + studentId);
-				
-		//4 Procesera resultatet
+			PreparedStatement preparedStatement = connection.prepareStatement(prep);
+	        preparedStatement.setString(1, studentEmail);
+	        preparedStatement.setInt(2, studentId);	
+	        preparedStatement.executeUpdate();
 			
 		}
 		catch(SQLException e) {
@@ -88,10 +85,10 @@ public class Student {
 	}
 	
 	public void insertStudent() {
-		
 		System.out.println("Please insert name: ");
 		Scanner temp1 = new Scanner(System.in);
 		String studentName = temp1.nextLine();
+		
 		System.out.println("Please insert email: ");
 		Scanner temp2 = new Scanner(System.in);
 		String studentEmail = temp2.nextLine();
@@ -104,15 +101,16 @@ public class Student {
 		temp1.close();
 		temp2.close();
 		try {
-		//1 hämta anslutning
+		//1 hï¿½mta anslutning
 			Connection connection = DriverManager.getConnection(URL1, mySQLProps1);
 		
 		//2 skapa ett statement
 			PreparedStatement preparedStatement = connection.prepareStatement(prep);
 	        preparedStatement.setString(1, studentName);
-	        preparedStatement.setString(2, studentEmail);		
-		//3 köra SQL frångan och hämta resultat
-			preparedStatement.executeUpdate(prep);
+	        preparedStatement.setString(2, studentEmail);	
+	        
+		//3 kï¿½ra SQL frï¿½ngan och hï¿½mta resultat
+			preparedStatement.executeUpdate();
 				
 		//4 Procesera resultatet
 			//resultSet.next();

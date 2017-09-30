@@ -28,7 +28,7 @@ public class Subject {
 			// 4. processera resultatet
 			while (resultSet.next()) {
 				System.out.println(resultSet.getString("id") + " " + resultSet.getString("subject_name") + " "
-						+ resultSet.getString("points") + " " + resultSet.getString("techer"));
+						+ resultSet.getString("points") + " " + resultSet.getString("teacher"));
 				System.out.println();
 			}
 		}
