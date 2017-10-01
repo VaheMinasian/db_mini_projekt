@@ -22,7 +22,7 @@ public class BelongsToHas {
 			// 2. skapa ett statement
 			Statement statement = connection.createStatement();
 
-			// 3. kÃ¶r SQL frÃ¥ga och hÃ¤mta ner resultatet
+			// 3. kör SQL fråga och hämta ner resultatet
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM belongsto_has");
 
 			// 4. processera resultatet

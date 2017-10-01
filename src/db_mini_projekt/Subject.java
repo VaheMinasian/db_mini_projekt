@@ -1,5 +1,6 @@
 package db_mini_projekt;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ public class Subject {
 			// 2. skapa ett statement
 			Statement statement = connection.createStatement();
 
-			// 3. kÃ¶r SQL frÃ¥ga och hÃ¤mta ner resultatet
+			// 3. kör SQL fråga och hämta ner resultatet
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM subject");
 
 			// 4. processera resultatet
