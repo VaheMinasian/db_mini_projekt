@@ -11,8 +11,14 @@ import java.util.Scanner;
 
 public class Faculty {
 		Properties mySQLProps = new Properties();
+		String temp = "";
 		String URL = "jdbc:mysql://localhost:3306/db_mini_projekt";
-		
+		Scanner sc = new Scanner(System.in);
+
+	public String getScanner() {
+		temp = sc.nextLine();
+		return temp;
+	}
 	public Faculty() {
 		mySQLProps.setProperty("user", "root");
 		mySQLProps.setProperty("password", "");
@@ -30,30 +36,27 @@ public class Faculty {
 			// 4. processera resultatet
 			while (resultSet.next()) {
 				System.out.println(resultSet.getString("faculty_name"));
-				System.out.println();
-			}
+			}	System.out.println();
+
 		}
 
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		System.out.print("select '1' to insert:");
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNext()){
-			if(scanner.nextInt()==1)
-				insertFaculty();
-			else
+		System.out.println("select '1' to insert:");
+		String faculty = getScanner();
+		while (!faculty.equals("1")) {
 				System.out.print("invalid input! Please enter '1' to insert faculty");
+				faculty=getScanner();
 		}
-		
+			if(faculty.equals("1"))
+				insertFaculty();		
 	}
 
 public void insertFaculty() {
 		System.out.print("Please insert a faculty name: ");
-		Scanner sc = new Scanner(System.in);
-		String facultyName = sc.nextLine();
-		sc.close();
+		String facultyName = getScanner();
 		
 		String prep = "Insert INTO faculty (faculty_name) values(?)";
 		try {

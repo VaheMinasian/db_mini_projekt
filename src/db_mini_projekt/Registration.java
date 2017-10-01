@@ -48,7 +48,7 @@ public void deleteReg() {
 			temp1.next();
 		}
 		int registrationId = temp1.nextInt();
-		temp1.close();
+
 		try {
 			//1 hamta anslutning
 				Connection connection = DriverManager.getConnection(URL, mySQLProps);

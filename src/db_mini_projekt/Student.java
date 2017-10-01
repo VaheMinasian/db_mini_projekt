@@ -42,8 +42,7 @@ public class Student {
 			catch(SQLException e) {
 				e.printStackTrace();
 			}	
-			System.out.print("select '1' to insert ||");
-			System.out.println(" select '2' to update");
+			System.out.println("\nselect '1' to insert || select '2' to update");
 			String commandNumber = getScanner();
 			while ((!commandNumber.equals("1")) && (!commandNumber.equals("2"))) {
 				System.out.print("invalid input! Please enter a number");
@@ -54,7 +53,6 @@ public class Student {
 				insertStudent();
 			else if (commandNumber.equals("2"))
 				updateStudent();
-			sc.close();
 	}
 	
 	public void updateStudent() {
