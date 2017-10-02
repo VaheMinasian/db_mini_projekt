@@ -1,5 +1,4 @@
 package db_mini_projekt;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +13,7 @@ public class Faculty {
 		String temp = "";
 		String URL = "jdbc:mysql://localhost:3306/db_mini_projekt";
 		Scanner sc = new Scanner(System.in);
+		int result = 0;
 
 	public String getScanner() {
 		temp = sc.nextLine();
@@ -44,7 +44,7 @@ public class Faculty {
 			e.printStackTrace();
 		}
 
-		System.out.println("select '1' to insert:");
+		System.out.println("select '1' to add new faculty:");
 		String faculty = getScanner();
 		while (!faculty.equals("1")) {
 				System.out.print("invalid input! Please enter '1' to insert faculty");
@@ -67,12 +67,14 @@ public void insertFaculty() {
 			PreparedStatement preparedStatement = connection.prepareStatement(prep);
 			preparedStatement.setString(1, facultyName);
 			// 3 kora SQL frangan och hamta resultat
-			preparedStatement.executeUpdate();
-
+			result= preparedStatement.executeUpdate();
+			
 			// 4 Procesera resultatet
-			// resultSet.next();
-			// System.out.println(resultSet.getString("student_name") + " " +
-			// resultSet.getString("email"));
+			 if (result!=0)
+		        	System.out.println("a new faculty added successfully.");
+		        else if (result==0)
+		        	System.out.println("no changes made to the table.");	        	
+		       
 
 		} catch (SQLException e) {
 			e.printStackTrace();

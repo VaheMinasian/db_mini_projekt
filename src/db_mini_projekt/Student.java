@@ -1,5 +1,4 @@
 package db_mini_projekt;
-
 import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +13,7 @@ public class Student {
 		String temp ="";
 		Properties mySQLProps= new Properties();
 		String URL = "jdbc:mysql://localhost:3306/db_mini_projekt";	
+		int result = 0;
 
 	public String getScanner() {
 		temp = sc.nextLine();
@@ -71,7 +71,12 @@ public class Student {
 			PreparedStatement preparedStatement = connection.prepareStatement(prep);
 	        preparedStatement.setString(1, studentEmail);
 	        preparedStatement.setInt(2, studentId);	
-	        preparedStatement.executeUpdate();
+	        result = preparedStatement.executeUpdate();
+	        if (result!=0)
+	        	System.out.println("1 row in student updated successfully.");
+	        else if (result==0)
+	        	System.out.println("no changes made to the table.");	        	
+	       
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -102,8 +107,12 @@ public class Student {
 	        preparedStatement.setString(2, studentEmail);	
 	        
 		//3 kora SQL frangan och hamta resultat
-			preparedStatement.executeUpdate();
-				
+			result = preparedStatement.executeUpdate();
+			if (result!=0)
+	        	System.out.println("a new student added successfully.");
+	        else if (result==0)
+	        	System.out.println("no changes made to the 'student' table.");	       
+			
 		//4 Procesera resultatet
 			//resultSet.next();
 		//	System.out.println(resultSet.getString("student_name") + " " + resultSet.getString("email"));

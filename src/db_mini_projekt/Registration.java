@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Registration {
 		Properties mySQLProps = new Properties();
 		String URL = "jdbc:mysql://localhost:3306/db_mini_projekt";
-	
+		int result = 0;
 		public Registration() {
 		mySQLProps.setProperty("user", "root");
 		mySQLProps.setProperty("password", "");		
@@ -57,10 +57,13 @@ public void deleteReg() {
 				Statement statement = connection.createStatement();
 			
 			//3 kora SQL frangan och hamta resultat
-				statement.executeUpdate("DELETE FROM registration where id= " + registrationId);
-					
+				result = statement.executeUpdate("DELETE FROM registration where id= " + registrationId);
+				 	
 			//4 Procesera resultatet
-				
+				if (result!=0)
+		        	System.out.println("row with id number "+ registrationId +" deleted successfully.");
+		        else if (result==0)
+		        	System.out.println("no changes made to the table.");	    
 		}
 			catch(SQLException e) {
 				e.printStackTrace();
