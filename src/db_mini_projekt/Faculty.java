@@ -36,7 +36,7 @@ public class Faculty {
 			// 4. processera resultatet
 			while (resultSet.next()) {
 				System.out.println(resultSet.getString("faculty_name"));
-			}	System.out.println();
+			}	
 
 		}
 

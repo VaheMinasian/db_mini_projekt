@@ -45,7 +45,7 @@ public class Student {
 			System.out.println("\nselect '1' to insert || select '2' to update");
 			String commandNumber = getScanner();
 			while ((!commandNumber.equals("1")) && (!commandNumber.equals("2"))) {
-				System.out.print("invalid input! Please enter a number");
+				System.out.print("invalid input! Please enter 1 or 2");
 				commandNumber = getScanner();
 			}
 			

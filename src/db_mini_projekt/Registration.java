@@ -29,7 +29,6 @@ public class Registration {
 			// 4. processera resultatet
 			while (resultSet.next()) {
 				System.out.println(resultSet.getString("id") +" "+resultSet.getString("student_id") +" "+ resultSet.getString("faculty_id") +" "+ resultSet.getString("start_date") );
-				System.out.println();
 			}
 		}
 

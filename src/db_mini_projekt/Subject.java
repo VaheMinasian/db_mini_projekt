@@ -29,7 +29,6 @@ public class Subject {
 			while (resultSet.next()) {
 				System.out.println(resultSet.getString("id") + " " + resultSet.getString("subject_name") + " "
 						+ resultSet.getString("points") + " " + resultSet.getString("teacher"));
-				System.out.println();
 			}
 		}
 
